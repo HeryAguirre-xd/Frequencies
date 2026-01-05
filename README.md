@@ -1,36 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frequencies
+
+A modern web application delivering scientifically-crafted sound therapy frequencies for wellness. Built with Next.js, React, and the Web Audio API.
+
+## Features
+
+- **24 Healing Frequency Presets** organized into 5 categories:
+  - **Solfeggio Scale** - Ancient healing frequencies (174Hz - 963Hz)
+  - **Chakra Alignment** - Energy center frequencies for mind-body balance
+  - **Earth & Cosmic** - Natural resonance frequencies (Schumann, Om, Temple)
+  - **Brainwave Entrainment** - Binaural beats and isochronic tones
+  - **Ambient Noise** - Brown noise for focus and sleep
+
+- **4 Audio Synthesis Types**:
+  - Binaural Beats - Two frequencies creating a perceived third tone
+  - Isochronic Tones - Pulsed sounds for brainwave entrainment
+  - Monaural Tones - Pure single frequencies
+  - Brown Noise - Deep ambient sound masking
+
+- **Real-time Visualization** - Interactive particle animation that responds to audio
+
+- **Responsive Design** - Works on desktop, tablet, and mobile
+
+## Tech Stack
+
+- **Framework**: Next.js 16 with App Router
+- **UI**: React 19, TypeScript, Tailwind CSS 4
+- **State Management**: Zustand
+- **Audio**: Web Audio API (native browser synthesis)
+- **Icons**: Lucide React
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone <repository-url>
+cd frequencies-app
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Create production build |
+| `npm start` | Start production server |
+| `npm run lint` | Run ESLint |
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx         # Root layout with fonts & metadata
+│   ├── page.tsx           # Main page with frequency groups
+│   └── globals.css        # Global styles & Tailwind
+├── components/            # React components
+│   ├── BackgroundVisualizer.tsx  # Canvas particle animation
+│   ├── FrequencyCard.tsx         # Individual preset card
+│   ├── GlobalPlayer.tsx          # Bottom audio player
+│   ├── DisclaimerModal.tsx       # Safety warning modal
+│   ├── Hero.tsx                  # Header section
+│   └── WaveAnimation.tsx         # Animated wave bars
+├── hooks/
+│   └── useAudioEngine.ts  # Web Audio API synthesis engine
+├── store/
+│   └── audioStore.ts      # Zustand state management
+├── lib/
+│   └── frequencies.ts     # Preset definitions & helpers
+└── types/
+    └── frequency.ts       # TypeScript interfaces
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Frequency Categories
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Solfeggio Scale
+Ancient frequencies derived from Gregorian chants:
+- 174 Hz - Foundation (pain reduction)
+- 285 Hz - Cellular Healing
+- 396 Hz - Liberation (release fear/guilt)
+- 417 Hz - Transmutation (facilitate change)
+- 432 Hz - Universal Harmony
+- 528 Hz - Miracle Tone (DNA repair, love)
+- 639 Hz - Heart Connection (relationships)
+- 741 Hz - Awakening (intuition)
+- 852 Hz - Third Eye (spiritual perception)
+- 963 Hz - Divine Connection (higher consciousness)
 
-## Deploy on Vercel
+### Chakra Alignment
+Frequencies mapped to the seven energy centers:
+- Root (396 Hz) - Grounding, stability
+- Sacral (417 Hz) - Creativity, passion
+- Solar Plexus (528 Hz) - Personal power
+- Heart (639 Hz) - Love, compassion
+- Throat (741 Hz) - Communication, truth
+- Third Eye (852 Hz) - Intuition, insight
+- Crown (963 Hz) - Spiritual connection
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Earth & Cosmic
+Natural resonance frequencies:
+- 7.83 Hz - Schumann Resonance (Earth's heartbeat)
+- 136.1 Hz - Om Frequency (cosmic vibration)
+- 111 Hz - Sacred Temple (ancient chamber resonance)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Brainwave Entrainment
+- Delta (2 Hz) - Deep sleep
+- Alpha (10 Hz) - Relaxation, stress relief
+- Gamma (40 Hz) - Focus, cognition
+
+## Usage Notes
+
+- **Headphones Required**: Binaural beats require stereo headphones to work properly
+- **Volume**: Start at low volume and adjust to comfort
+- **Session Length**: 15-30 minutes recommended for therapeutic benefit
+- **Safety**: Not recommended while driving or operating machinery
+
+## Deployment
+
+Deploy easily on [Vercel](https://vercel.com):
+
+```bash
+npm run build
+```
+
+See [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for other platforms.
+
+## License
+
+MIT

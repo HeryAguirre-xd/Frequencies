@@ -41,7 +41,7 @@ export function BackgroundVisualizer({ analyserNode, isPlaying }: BackgroundVisu
     // Initialize particles
     const colors = ['#14b8a6', '#0891b2', '#6366f1', '#8b5cf6'];
     const particles: Particle[] = [];
-    
+
     for (let i = 0; i < 50; i++) {
       particles.push({
         x: Math.random() * canvas.width,
