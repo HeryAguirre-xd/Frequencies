@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { FREQUENCY_PRESETS } from '@/lib/frequencies';
+import { getPresetsByGroup, FREQUENCY_GROUPS, GROUP_DESCRIPTIONS, FrequencyGroup } from '@/lib/frequencies';
 import { useAudioEngine } from '@/hooks/useAudioEngine';
 import { useAudioStore } from '@/store/audioStore';
 import { FrequencyPreset } from '@/types/frequency';
@@ -87,23 +87,43 @@ export default function Home() {
         {/* Hero Section */}
         <Hero />
         
-        {/* Frequency Grid */}
+        {/* Frequency Groups */}
         <section className="max-w-6xl mx-auto px-4 pb-32">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {FREQUENCY_PRESETS.map((preset, index) => (
-              <div
-                key={preset.id}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <FrequencyCard
-                  preset={preset}
-                  isActive={isPlaying && currentPreset?.id === preset.id}
-                  onToggle={() => handleToggle(preset)}
-                />
+          {FREQUENCY_GROUPS.map((group, groupIndex) => {
+            const presets = getPresetsByGroup()[group];
+            if (!presets || presets.length === 0) return null;
+
+            return (
+              <div key={group} className="mb-16">
+                {/* Group Header */}
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold text-white mb-2">
+                    {group}
+                  </h2>
+                  <p className="text-slate-400 text-sm max-w-2xl">
+                    {GROUP_DESCRIPTIONS[group as FrequencyGroup]}
+                  </p>
+                </div>
+
+                {/* Presets Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                  {presets.map((preset, index) => (
+                    <div
+                      key={preset.id}
+                      className="animate-fade-in"
+                      style={{ animationDelay: `${(groupIndex * 3 + index) * 50}ms` }}
+                    >
+                      <FrequencyCard
+                        preset={preset}
+                        isActive={isPlaying && currentPreset?.id === preset.id}
+                        onToggle={() => handleToggle(preset)}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
           
           {/* Info Section */}
           <div className="mt-16 text-center">

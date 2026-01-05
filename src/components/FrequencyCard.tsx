@@ -1,6 +1,29 @@
 'use client';
 
-import { Play, Pause, Moon, Heart, Zap, Sparkles, Shield, Waves } from 'lucide-react';
+import {
+  Play,
+  Pause,
+  Moon,
+  Heart,
+  Zap,
+  Sparkles,
+  Shield,
+  Waves,
+  Anchor,
+  Dna,
+  RefreshCw,
+  Star,
+  Lightbulb,
+  Eye,
+  Crown,
+  CircleDot,
+  Flame,
+  Sun,
+  Mic,
+  Globe,
+  Infinity,
+  Landmark,
+} from 'lucide-react';
 import { FrequencyPreset } from '@/types/frequency';
 import { WaveAnimation } from './WaveAnimation';
 
@@ -11,12 +34,30 @@ interface FrequencyCardProps {
 }
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  // Original icons
   moon: Moon,
   heart: Heart,
   zap: Zap,
   sparkles: Sparkles,
   shield: Shield,
   waves: Waves,
+  // Solfeggio icons
+  anchor: Anchor,
+  dna: Dna,
+  'refresh-cw': RefreshCw,
+  star: Star,
+  lightbulb: Lightbulb,
+  eye: Eye,
+  crown: Crown,
+  // Chakra icons
+  'circle-dot': CircleDot,
+  flame: Flame,
+  sun: Sun,
+  mic: Mic,
+  // Earth & Cosmic icons
+  globe: Globe,
+  infinity: Infinity,
+  landmark: Landmark,
 };
 
 export function FrequencyCard({ preset, isActive, onToggle }: FrequencyCardProps) {

@@ -29,6 +29,7 @@ export interface FrequencyPreset {
     title: string;
     description: string;
     category: string;
+    group: string;
     config: FrequencyConfig;
     color: string;
     icon: string;

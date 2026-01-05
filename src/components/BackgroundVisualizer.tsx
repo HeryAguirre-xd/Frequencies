@@ -2,6 +2,17 @@
 
 import { useEffect, useRef } from 'react';
 
+interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  radius: number;
+  baseRadius: number;
+  color: string;
+  alpha: number;
+}
+
 interface BackgroundVisualizerProps {
   analyserNode: AnalyserNode | null;
   isPlaying: boolean;
@@ -9,19 +20,8 @@ interface BackgroundVisualizerProps {
 
 export function BackgroundVisualizer({ analyserNode, isPlaying }: BackgroundVisualizerProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const particlesRef = useRef<Particle[]>([]);
-
-  interface Particle {
-    x: number;
-    y: number;
-    vx: number;
-    vy: number;
-    radius: number;
-    baseRadius: number;
-    color: string;
-    alpha: number;
-  }
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -136,4 +136,3 @@ export function BackgroundVisualizer({ analyserNode, isPlaying }: BackgroundVisu
     />
   );
 }
-
